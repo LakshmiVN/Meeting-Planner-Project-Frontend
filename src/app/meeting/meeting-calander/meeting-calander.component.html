@@ -1,0 +1,104 @@
+<div>
+  <div>
+    <Header class="header">Welcome: {{userName | titlecase}} (Admin)
+      <button pButton type="button" class="sidebarButton" (click)="visibleSidebar1 = true" icon="pi pi-bars"></button>
+    </Header>
+  </div>
+  <p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+    <div class="p-3 text-white textCapitalize textCenter">
+      <button (click)="logout()" class="btn btn-info customButton">
+        Logout
+      </button>
+    </div>
+    <ul class="list" style="color: black">
+      <div class="typeOfUsers">All Users:-</div>
+      <li *ngFor="let user of allUserDetail" (click)="userSelectedToAddMeeting(user)">
+        <button pButton type="button"
+          class="ui-button-rounded ui-button-secondary userList">{{user.firstName | titlecase}}
+          {{user.lastName | titlecase}}</button>
+        <br>
+        <br>
+      </li>
+    </ul>
+  </p-sidebar>
+  <div class="container">
+    <div class="row">
+      <div class="container-fluid">
+        <ng-container *ngIf="options">
+          <div style="font-size: 25px; text-align: center">{{selectedFirstName|titlecase}}
+            {{selectedLastName|titlecase}}
+          </div>
+          <ng-fullcalendar #fullcalendar (select)="dateSelect($event)" [eventsModel]="eventsModel" [options]="options"
+            (eventClick)="eventClick($event)" style="padding: 20px;">
+          </ng-fullcalendar>
+        </ng-container>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="contain">
+            <p-dialog id="dateDialog" [(visible)]="displayDate">
+              <p-header>
+                Your Meeting
+              </p-header>
+              <div>
+                <b>Agenda:</b> <input type="text" class="form-control" [(ngModel)]="eventTitle" name="eventTitle"
+                  placeholder="Event Title">
+                <b>Starts Date:(YYYY-MM-DD)</b> <input type="text" class="form-control" [(ngModel)]="startDate"
+                  name="startDate" [value]="startDate">
+                <br>
+                <b>Starts Time:(HH:MM:SS)</b> <input type="text" class="form-control" [(ngModel)]="startTime"
+                  name="startTime" [value]="startTime">
+                <br>
+                <b>Ends Date:(YYYY-MM-DD)</b> <input type="text" class="form-control" [(ngModel)]="endDate"
+                  name="endDate" [value]="endDate">
+                <br>
+                <b>Ends Time:(HH:MM:SS)</b> <input type="text" class="form-control" [(ngModel)]="endTime" name="endTime"
+                  [value]="endTime">
+                <br>
+                <b>Location :</b> <input type="text" class="form-control" [(ngModel)]="location" name="location"
+                  [value]="location">
+                <br>
+              </div>
+              <p-footer style="text-align: center !important;">
+                <button type=" button" class="btn btn-outline-success" (click)="displayDate=false"
+                  (click)="createEvent()">Create
+                  Event</button>
+              </p-footer>
+            </p-dialog>
+          </div>
+        </div>
+      </div>
+      <p-dialog id="dateDialog" [(visible)]="displayEvent">
+        <p-header>
+          Your Meeting
+        </p-header>
+        <div>
+          <b>Agenda:</b> <input type="text" class="form-control" [(ngModel)]="eventTitle" name="eventTitle"
+            placeholder="Event Title">
+          <b>Starts Date:(YYYY-MM-DD)</b> <input type="text" class="form-control" [(ngModel)]="startDate"
+            name="startDate" [value]="startDate">
+          <br>
+          <b>Starts Time:(HH:MM:SS)</b> <input type="text" class="form-control" [(ngModel)]="startTime" name="startTime"
+            [value]="startTime">
+          <br>
+          <b>Ends Date:(YYYY-MM-DD)</b> <input type="text" class="form-control" [(ngModel)]="endDate" name="endDate"
+            [value]="endDate">
+          <br>
+          <b>Ends Time:(HH:MM:SS)</b> <input type="text" class="form-control" [(ngModel)]="endTime" name="endTime"
+            [value]="endTime">
+          <br>
+          <b>Location :</b> <input type="text" class="form-control" [(ngModel)]="location" name="location"
+            [value]="location">
+          <br>
+        </div>
+        <p-footer>
+          <button type=" button" class="btn btn-outline-danger" (click)="displayEvent=false"
+            (click)="deleteEvent()">Delete</button>
+          <button type=" button" class="btn btn-outline-success" (click)="displayEvent=false"
+            (click)="updateEvent()">Update
+            Event</button>
+        </p-footer>
+      </p-dialog>
+    </div>
+  </div>
+</div>

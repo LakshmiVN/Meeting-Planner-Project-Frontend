@@ -1,0 +1,48 @@
+.card {
+  height: 500px;
+  width: 50%;
+  margin-top: 30px;
+  margin-bottom: auto;
+  color: white;
+  width: 400px;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.login_btn {
+  color: white;
+  background-color: transparent;
+  width: 100px;
+  border-radius: 5px;
+  border-color: white;
+}
+
+.login_btn:hover {
+  color: white;
+  background-color: cadetblue;
+}
+
+.forgot{
+  color: white;
+  background-color: transparent;
+  border-radius: 5px;
+  border-color: white;
+}
+
+.forgot:hover {
+  color: white;
+  background-color: cadetblue;
+}
+
+label {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.modal-title {
+  color: black;
+}
+
+.heading-text {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  cursor: pointer;
+}

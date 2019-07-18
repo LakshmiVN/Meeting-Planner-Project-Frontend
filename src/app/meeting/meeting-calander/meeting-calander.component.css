@@ -1,0 +1,53 @@
+p {
+  font-family: Lato;
+}
+
+.container-fluid {
+  background-color: white;
+}
+
+.container{
+  padding: 25px;
+}
+
+#wrapper {
+  background: white;
+  padding-left: 25px;
+  /*  transition: all 0.4s ease 0s; */
+}
+
+header {
+  color: whitesmoke;
+  font-size: 20px;
+  padding: 15px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background: #343A40;
+}
+
+.list {
+  color: white;
+}
+
+.sidebarButton {
+  float: left;
+  margin-right: 20px;
+  background-color: dimgray;
+}
+
+.typeOfUsers {
+  color: black;
+  font-size: 25px;
+  margin-bottom: 1em;
+  width: 150px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  float: left;
+}
+
+.userList {
+  height: 30px;
+  width: 200px;
+}
+
+.dialog{
+  width: 50%;
+}

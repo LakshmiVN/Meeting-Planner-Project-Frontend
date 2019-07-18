@@ -1,0 +1,75 @@
+<Header class="header">Welcome to meeting planner {{ userName | titlecase }} !!
+  <button type="button" class="btn btn-info logout" (click)="logout()">
+    Logout
+  </button>
+</Header>
+
+<div class="container">
+  <div class="row" style="padding: 20px;">
+    <div class="container-fluid">
+      <ng-container *ngIf="options">
+        <ng-fullcalendar #fullcalendar (dateClick)="dateClick($event)" [eventsModel]="eventsModel" [options]="options"
+          (eventClick)="eventClick($event)"></ng-fullcalendar>
+      </ng-container>
+    </div>
+
+    <p-dialog id="dateDialog" [(visible)]="displayDate">
+      <p-header>
+        {{ startDate }}
+      </p-header>
+      <div>The selected date does not have any event. Please click on an event to view your scheduled meetings</div>
+      <p-footer>
+        <button type=" button" class="btn btn-outline-danger" (click)="displayDate = false">
+          Close
+        </button>
+      </p-footer>
+    </p-dialog>
+
+    <p-dialog id="dateDialog" [(visible)]="displayEvent">
+      <p-header>
+        Your Meeting
+      </p-header>
+      <div>
+        <b>Agenda:</b>
+        <input type="text" class="form-control" [value]="eventTitle" disabled="true" />
+        <br>
+        <b>Starts:</b>
+        <input type="text" class="form-control" [value]="startDate" disabled="true" />
+        <b>at:</b>
+        <input type="text" class="form-control" [value]="startTime" disabled="true" />
+        <br />
+        <b>Ends:</b>
+        <input type="text" class="form-control" [value]="endDate" disabled="true" />
+        <b>at:</b>
+        <input type="text" class="form-control" [value]="endTime" disabled="true" />
+        <br />
+        <b>Location:</b>
+        <input type="text" class="form-control" [value]="location" disabled="true" />
+        <br />
+        <b>CreatedBy:</b>
+        <input type="text" class="form-control" [value]="createdBy" disabled="true" />
+        <br />
+      </div>
+      <p-footer>
+        <button type=" button" class="btn btn-outline-danger" (click)="displayEvent = false">
+          Close
+        </button>
+      </p-footer>
+    </p-dialog>
+
+
+    <p-dialog id="dateDialog" [(visible)]="displayRemainder">
+      <p-header>
+        You Have A Meeting within title {{eventTitle}} in 1 Minute
+      </p-header>
+      <p-footer>
+        <button type=" button" class="btn btn-outline-danger" (click)="stopDisplayRemainder()">
+          Dismiss
+        </button>
+        <button type=" button" class="btn btn-outline-danger" (click)="displayRemainder = false">
+          Snooze
+        </button>
+      </p-footer>
+    </p-dialog>
+  </div>
+</div>

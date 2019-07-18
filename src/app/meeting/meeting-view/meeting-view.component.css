@@ -1,0 +1,23 @@
+p {
+  font-family: Lato;
+}
+
+.container-fluid {
+  background-color: white;
+  padding: 20px;
+}
+
+header {
+  color: aliceblue;
+  font-size: 20px;
+  padding: 15px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background: #343A40;
+}
+
+.logout {
+  margin: 2px;
+  float: right;
+  line-height: 13px;
+}
+
